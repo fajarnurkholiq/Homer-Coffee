@@ -1,0 +1,341 @@
+```html
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homer Coffee - Bandung's Social Living Room</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#121212',
+                        brandCard: '#1a1a1a',
+                        brandGold: '#d4af37',
+                        brandCream: '#f5f5f7'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brandDark text-brandCream font-sans antialiased selection:bg-brandGold selection:text-brandDark">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-brandDark/90 backdrop-blur-md border-b border-neutral-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#beranda" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center font-bold text-black text-xs tracking-tighter">
+                    homefo
+                </div>
+                <div>
+                    <span class="font-bold text-lg tracking-wider">homer_coffee</span>
+                    <span class="block text-xs text-neutral-400">Bandung's Social Living Room</span>
+                </div>
+            </a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <button onclick="switchTab('beranda')" id="nav-beranda-btn" class="nav-btn text-brandGold transition hover:text-brandGold">Beranda</button>
+                <button onclick="switchTab('menu')" id="nav-menu-btn" class="nav-btn text-neutral-400 transition hover:text-brandGold">Menu & Produk</button>
+                <button onclick="switchTab('kontak')" id="nav-kontak-btn" class="nav-btn text-neutral-400 transition hover:text-brandGold">Lokasi & Kontak</button>
+                <a href="https://wa.me/6280000000000" target="_blank" class="bg-brandGold text-brandDark font-semibold px-4 py-2 rounded-full text-xs uppercase tracking-wider hover:bg-yellow-500 transition">
+                    <i class="fa-brands fa-whatsapp mr-1"></i> Reservasi
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-neutral-300 focus:outline-none p-2">
+                <i id="mobile-icon" class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brandCard border-b border-neutral-800 px-4 pt-2 pb-4 space-y-3">
+            <button onclick="switchTab('beranda'); toggleMobileMenu();" class="block w-full text-left py-2 text-brandGold font-medium">Beranda</button>
+            <button onclick="switchTab('menu'); toggleMobileMenu();" class="block w-full text-left py-2 text-neutral-300 font-medium">Menu & Produk</button>
+            <button onclick="switchTab('kontak'); toggleMobileMenu();" class="block w-full text-left py-2 text-neutral-300 font-medium">Lokasi & Kontak</button>
+            <a href="https://wa.me/6280000000000" target="_blank" class="block text-center bg-brandGold text-brandDark font-semibold py-2 rounded-full text-xs uppercase tracking-wider">
+                <i class="fa-brands fa-whatsapp mr-1"></i> WhatsApp Kami
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Container (3 Pages Simulation) -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- PAGE 1: BERANDA / PROFIL BISNIS -->
+        <section id="page-beranda" class="page-section space-y-16">
+            <!-- Hero Banner -->
+            <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-900 border border-neutral-800 p-8 sm:p-12 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="space-y-6 max-w-xl">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-neutral-800 text-brandGold text-xs font-semibold tracking-wide border border-neutral-700">
+                        <i class="fa-solid fa-star text-xs"></i> <span>Rating 4.8 (609+ Ulasan)</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                        Bandung's Social <span class="text-brandGold">Living Room</span>
+                    </h1>
+                    <p class="text-neutral-400 text-sm sm:text-base leading-relaxed">
+                        Tempat nongkrong paling nyaman di jantung kota Bandung. Hadir di Braga dan Cendana, siap menemani waktu santai, produktif, hingga larut malam kamu.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="switchTab('menu')" class="bg-brandGold text-brandDark font-bold px-6 py-3 rounded-full text-sm transition hover:bg-yellow-500 shadow-lg">
+                            Jelajahi Menu
+                        </button>
+                        <button onclick="switchTab('kontak')" class="bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 font-bold px-6 py-3 rounded-full text-sm transition">
+                            Lihat Lokasi & Jam Buka
+                        </button>
+                    </div>
+                </div>
+                <div class="w-full md:w-80 h-80 rounded-2xl bg-neutral-800 overflow-hidden border border-neutral-700 flex items-center justify-center relative shadow-2xl">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80" alt="Suasana Homer Coffee" class="w-full h-full object-cover opacity-80 hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/400x400?text=Homer+Coffee'">
+                    <div class="absolute bottom-4 left-4 z-20">
+                        <span class="text-xs uppercase tracking-widest text-brandGold font-bold">Autentik & Nyaman</span>
+                        <h3 class="text-lg font-bold">Suasana Kedai</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Features / Highlights -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-brandCard p-6 rounded-2xl border border-neutral-800 space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-neutral-800 flex items-center justify-center text-brandGold text-xl">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Kopi & Minuman Premium</h3>
+                    <p class="text-neutral-400 text-sm">Pilihan menu favorit seperti Dirty Latte, Espresso Pouch, Mont Blanc Coffee, hingga Matcha Latte.</p>
+                </div>
+                <div class="bg-brandCard p-6 rounded-2xl border border-neutral-800 space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-neutral-800 flex items-center justify-center text-brandGold text-xl">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Buka Hingga Dini Hari</h3>
+                    <p class="text-neutral-400 text-sm">Cabang Braga buka sampai pukul 02.00 AM. Cocok buat kamu yang suka ngobrol santai malam hari.</p>
+                </div>
+                <div class="bg-brandCard p-6 rounded-2xl border border-neutral-800 space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-neutral-800 flex items-center justify-center text-brandGold text-xl">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Lokasi Strategis</h3>
+                    <p class="text-neutral-400 text-sm">Berada di Braga City Walk (paling belakang) dan Jl. Cendana No.11 Kota Bandung.</p>
+                </div>
+            </div>
+
+            <!-- Testimonial Quote -->
+            <div class="bg-brandCard border border-neutral-800 rounded-2xl p-8 text-center max-w-2xl mx-auto space-y-4">
+                <div class="text-brandGold text-xl">
+                    <i class="fa-solid fa-quote-left"></i>
+                </div>
+                <p class="text-neutral-300 italic text-sm sm:text-base">
+                    "Tempatnya enak banget, cocok buat hangout bareng temen-temen. Udah buka juga dari pagi jadi cocok jadi pilihan abis lari."
+                </p>
+                <div class="text-xs uppercase tracking-widest text-neutral-400 font-semibold">
+                    — Salwa Najiah (Google Reviewer)
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: MENU & PRODUK -->
+        <section id="page-menu" class="page-section hidden space-y-12">
+            <div class="text-center max-w-xl mx-auto space-y-3">
+                <h2 class="text-3xl font-extrabold tracking-tight">Menu & Produk Unggulan</h2>
+                <p class="text-neutral-400 text-sm">Kisaran harga terjangkau Rp 25.000 – Rp 50.000 per orang. Disajikan dengan kualitas rasa terbaik.</p>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Item 1 -->
+                <div class="bg-brandCard rounded-2xl overflow-hidden border border-neutral-800 group">
+                    <div class="h-48 overflow-hidden relative bg-neutral-900">
+                        <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=500&q=80" alt="Dirty Latte" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/300x300?text=Dirty+Latte'">
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-bold text-base">Dirty Latte</h3>
+                        <p class="text-xs text-neutral-400">Kombinasi espresso rich dengan fresh milk dingin bernuansa creamy.</p>
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-brandGold font-bold text-sm">Rp 35.000</span>
+                            <span class="text-xs bg-neutral-800 px-2 py-1 rounded text-neutral-300">Coffee</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-brandCard rounded-2xl overflow-hidden border border-neutral-800 group">
+                    <div class="h-48 overflow-hidden relative bg-neutral-900">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=500&q=80" alt="Espresso Pouch" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/300x300?text=Espresso+Pouch'">
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-bold text-base">Espresso Pouch</h3>
+                        <p class="text-xs text-neutral-400">Kopi praktis dalam kemasan pouch higienis, cocok untuk dibawa mobilitas.</p>
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-brandGold font-bold text-sm">Rp 30.000</span>
+                            <span class="text-xs bg-neutral-800 px-2 py-1 rounded text-neutral-300">Ready to Go</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-brandCard rounded-2xl overflow-hidden border border-neutral-800 group">
+                    <div class="h-48 overflow-hidden relative bg-neutral-900">
+                        <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=500&q=80" alt="Mont Blanc Coffee" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/300x300?text=Mont+Blanc'">
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-bold text-base">Mont Blanc Coffee</h3>
+                        <p class="text-xs text-neutral-400">Signature coffee dengan lapisan foam lembut di atasnya yang khas.</p>
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-brandGold font-bold text-sm">Rp 40.000</span>
+                            <span class="text-xs bg-neutral-800 px-2 py-1 rounded text-neutral-300">Signature</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-brandCard rounded-2xl overflow-hidden border border-neutral-800 group">
+                    <div class="h-48 overflow-hidden relative bg-neutral-900">
+                        <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=500&q=80" alt="Matcha Latte" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/300x300?text=Matcha+Latte'">
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="font-bold text-base">Matcha Latte</h3>
+                        <p class="text-xs text-neutral-400">Green tea matcha premium yang pekat, manis pas, dan menenangkan.</p>
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-brandGold font-bold text-sm">Rp 38.000</span>
+                            <span class="text-xs bg-neutral-800 px-2 py-1 rounded text-neutral-300">Non-Coffee</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Banner -->
+            <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+                <div>
+                    <h3 class="font-bold text-lg">Ingin pesan atau reservasi tempat sekarang?</h3>
+                    <p class="text-neutral-400 text-sm">Hubungi admin kami melalui WhatsApp untuk konfirmasi meja atau tanya menu hari ini.</p>
+                </div>
+                <a href="https://wa.me/6280000000000" target="_blank" class="bg-brandGold text-brandDark font-bold px-6 py-3 rounded-full text-sm shrink-0 hover:bg-yellow-500 transition">
+                    <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp Pesanan
+                </a>
+            </div>
+        </section>
+
+        <!-- PAGE 3: LOKASI & KONTAK -->
+        <section id="page-kontak" class="page-section hidden space-y-12">
+            <div class="text-center max-w-xl mx-auto space-y-3">
+                <h2 class="text-3xl font-extrabold tracking-tight">Lokasi & Jam Operasional</h2>
+                <p class="text-neutral-400 text-sm">Kunjungi social living room kami di dua titik strategis Kota Bandung.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Braga Location -->
+                <div class="bg-brandCard p-6 sm:p-8 rounded-2xl border border-neutral-800 space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-brandGold/10 text-brandGold flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Homer Coffee - Braga</h3>
+                            <span class="text-xs text-neutral-400">Braga City Walk (Paling Belakang)</span>
+                        </div>
+                    </div>
+                    <p class="text-neutral-300 text-sm leading-relaxed">
+                        Jl. Braga No.99-101, Braga, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40111
+                    </p>
+                    <div class="space-y-2 border-t border-neutral-800 pt-4 text-sm">
+                        <div class="flex justify-between"><span class="text-neutral-400">Senin - Rabu:</span> <span class="font-medium">09.00 – 02.00</span></div>
+                        <div class="flex justify-between"><span class="text-neutral-400">Kamis - Jumat:</span> <span class="font-medium">09.00 – 02.00</span></div>
+                        <div class="flex justify-between"><span class="text-neutral-400">Sabtu - Minggu:</span> <span class="font-medium">07.00 – 02.00</span></div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Braga+City+Walk+Homer+Coffee" target="_blank" class="block text-center w-full bg-neutral-800 hover:bg-neutral-700 py-2.5 rounded-xl text-xs font-bold transition border border-neutral-700">
+                        <i class="fa-solid fa-map-location-dot mr-1"></i> Buka Rute Google Maps
+                    </a>
+                </div>
+
+                <!-- Cendana Location -->
+                <div class="bg-brandCard p-6 sm:p-8 rounded-2xl border border-neutral-800 space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-brandGold/10 text-brandGold flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Homer Coffee - Cendana</h3>
+                            <span class="text-xs text-neutral-400">Cabang Cendana</span>
+                        </div>
+                    </div>
+                    <p class="text-neutral-300 text-sm leading-relaxed">
+                        Jl. Cendana No.11, Kota Bandung, Jawa Barat
+                    </p>
+                    <div class="space-y-2 border-t border-neutral-800 pt-4 text-sm">
+                        <div class="flex justify-between"><span class="text-neutral-400">Jam Operasional:</span> <span class="font-medium">07.00 – 00.00</span></div>
+                        <div class="flex justify-between"><span class="text-neutral-400">Kisaran Harga:</span> <span class="font-medium">Rp 25.000 – Rp 50.000</span></div>
+                        <div class="flex justify-between"><span class="text-neutral-400">Fasilitas:</span> <span class="font-medium">Makan di tempat & Bawa pulang</span></div>
+                    </div>
+                    <a href="https://wa.me/6280000000000" target="_blank" class="block text-center w-full bg-brandGold text-brandDark py-2.5 rounded-xl text-xs font-bold transition hover:bg-yellow-500">
+                        <i class="fa-brands fa-whatsapp mr-1"></i> Hubungi Cabang Cendana
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-neutral-800 mt-20 py-8 bg-brandDark text-neutral-400 text-xs">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-white">homer_coffee</span>
+                <span>&copy; 2026. All rights reserved. Bandung's Social Living Room.</span>
+            </div>
+            <div class="flex space-x-4">
+                <a href="https://instagram.com/homer_coffee" target="_blank" class="hover:text-brandGold transition"><i class="fa-brands fa-instagram text-base"></i></a>
+                <a href="https://linktr.ee/HomerCoffeeIndonesiaa" target="_blank" class="hover:text-brandGold transition"><i class="fa-solid fa-link text-base"></i></a>
+                <a href="https://wa.me/6280000000000" target="_blank" class="hover:text-brandGold transition"><i class="fa-brands fa-whatsapp text-base"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.add('hidden'));
+
+            // Show selected section
+            const targetSection = document.getElementById('page-' + tabId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update nav button styles
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('text-brandGold');
+                btn.classList.add('text-neutral-400');
+            });
+
+            const activeBtn = document.getElementById('nav-' + tabId + '-btn');
+            if (activeBtn) {
+                activeBtn.classList.remove('text-neutral-400');
+                activeBtn.classList.add('text-brandGold');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-icon');
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.className = "fa-solid fa-bars text-xl";
+            } else {
+                icon.className = "fa-solid fa-xmark text-xl";
+            }
+        }
+    </script>
+</body>
+</html>
+
+```
